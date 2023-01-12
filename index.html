@@ -33,15 +33,24 @@
     </main>
     <script>
         window.addEventListener("load", () => {
-            var md = new MobileDetect(window.navigator.userAgent);
-            console.log( md.mobile() ); // null if not mobile device
-            console.log( md.phone() ); // null if not smartphone
-            console.log( md.tablet() ); // null if not tablet
+                var md = new MobileDetect(window.navigator.userAgent);
+                console.log( md.mobile() ); // null if not mobile device
+                console.log( md.phone() ); // null if not smartphone
+                console.log( md.tablet() ); // null if not tablet
 
-            if (!md.mobile() || !md.phone() || !md.tablet()) {
-                response = document.querySelector("#response")
-                resp = "<div>Only mobile devices are supported.</div>"
-                response.innerHTML = resp
+                if (md.mobile()) {
+                    console.log("In mobile");
+                    return;
+                } else if (md.phone()) {
+                    console.log("In phone");
+                    return;
+                } else if (md.tablet()) {
+                    console.log("In tablet");
+                    return;
+                } else {
+                    response = document.querySelector("#response")
+                    resp = "<div>Only mobile devices are supported.</div>"
+                    response.innerHTML = resp
             }
         });
     </script>
