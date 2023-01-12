@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.5/mobile-detect.min.js"></script>
+
+    <title>
+        Detects Visitor's Device
+    </title>
+</head>
+<body>
+    <main>
+        <h1>
+            Detect Mobile Devices
+        </h1>
+        <div id="response"></div>
+        <div>
+            This page tries to detect user device. <br>
+            The aim is to restrict access only to mobile device.
+        </div>
+
+        <div class="form-cont">
+            <form action="" class="capture">
+                <div class="inp-cont">
+                    <label for="cam">Capture face</label> <br>
+                    <input type="file" capture="user" accept="video/*" placeholder="Click to capture your face">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <script>
+        window.addEventListener("load", () => {
+            var md = new MobileDetect(window.navigator.userAgent);
+            console.log( md.mobile() ); // null if not mobile device
+            console.log( md.phone() ); // null if not smartphone
+            console.log( md.tablet() ); // null if not tablet
+
+            if (!md.mobile() || !md.phone() || !md.tablet()) {
+                response = document.querySelector("#response")
+                resp = "<div>Only mobile devices are supported.</div>"
+                response.innerHTML = resp
+            }
+        });
+    </script>
+</body>
+</html>
